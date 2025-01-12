@@ -8,6 +8,7 @@ def load_data() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
 
     def load_csv(file_name: str) -> pd.DataFrame:
         """Helper function to load a CSV file and set the index name."""
+        
         file_path = os.path.join(os.getcwd(), file_name)
         df = pd.read_csv(file_path, index_col=[0], header=[0])
         df.index.name = "Index"
@@ -22,6 +23,7 @@ def load_data() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
 
 def preprocess_and_clean(X, Z) -> pd.DataFrame:
     """Preprocess and clean the data."""
+
     def cap_outliers(column):
         lower_bound = np.percentile(column, 0.01)
         upper_bound = np.percentile(column, 99.99)
@@ -33,6 +35,7 @@ def preprocess_and_clean(X, Z) -> pd.DataFrame:
 
 def visualize_time_series(X_cleaned, Y, Z):
     """Visualize the layers of X_cleaned, Y, and Z as line plots."""
+
     plt.figure(figsize=(15, 10))
 
     # Plot X_cleaned time series
@@ -66,6 +69,7 @@ def visualize_time_series(X_cleaned, Y, Z):
 
 def main():
     """Main function to visualize the data."""
+
     X, Y, Z = load_data()
     X_cleaned = preprocess_and_clean(X, Z)
 
